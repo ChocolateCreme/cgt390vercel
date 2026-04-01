@@ -12,9 +12,12 @@ datasource db {
 }
 
 model Students {
-  id String @id @default(uuid())
+  id Int @id @default(autoincrement())
   name String
-  major String
-  year Int
-  gpa Float
+  title String
+  email String @unique
+  bio String
+  image_url String
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
 }
