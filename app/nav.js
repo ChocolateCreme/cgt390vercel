@@ -6,6 +6,7 @@ const Nav = () => {
                     <li><a href="/">Home</a></li>
                     <li><a href="/about">About</a></li>
                     <li><a href="/addprofile">Add Profile</a></li>
+                    <li><a href="/profiles">Other Profiles</a></li>
                 </ul>
             </nav>
         </div>
