@@ -25,10 +25,7 @@ export async function POST(request) {
     const name = formData.get("name");
     const title = formData.get("title");
     const email = formData.get("email");
-// TODO: Get the bio field from formData
-// TODO: Get the uploaded image file from formData
-    
-    // Validate required fields
+
     if (!name || name.trim() === "") {
       return Response.json({ error: "Name is required" }, { status: 400 });
     } else if (!title || title.trim() === "") {
@@ -41,13 +38,11 @@ export async function POST(request) {
       return Response.json({ error: "Image is required and must be less than 1MB" }, { status: 400 });
     }
 
-    // Upload image to Vercel Blob
     const blob = await put(imgFile.name, imgFile, {
       access: 'public',
       allowOverwrite: true
     });
 
-    // Save profile to database with Blob URL
     const created = await prisma.profiles.create({
       data: {
         name: name.trim(),
