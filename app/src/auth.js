@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import bcrypt from "bcryptjs";
 import Credentials from "next-auth/providers/credentials";
 import prisma from "@/lib/prisma";
+import GitHub from "next-auth/providers/github";
 
 export const {
   auth,     // for server components & proxy
@@ -13,6 +14,8 @@ export const {
             credentials: {
             email: { label: "Email", type: "email" },
             password: { label: "Password", type: "password" },
+            GitHub,
+            Google,
         },
         async authorize(credentials) {
             try {
@@ -67,6 +70,6 @@ export const {
         token.email = user.email;
       }
         return token;
-    }
+    },
   }
 });
